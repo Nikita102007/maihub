@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль {{ user_profile.username }}{% endblock %}
+
+{% block content %}
+    <h1>Профиль пользователя: {{ user_profile.username }}</h1>
+
+    <div class="profile-container">
+        <div class="profile-picture">
+            {% if user.photo %}
+    <p><img src="{{ user.photo.url }}" style="width: 125px; height: auto; border-radius: 10%;"></p>
+    {% else %}
+    <p><img src="{{ default_image }}"></p>
+    {% endif %}
+        </div>
+
+        <div class="profile-details">
+            <p><strong>Имя:</strong> {{ user_profile.first_name }} {{ user_profile.last_name }}</p>
+            <p><strong>E-mail:</strong> {{ user_profile.email }}</p>
+
+            {% if user_profile.phone_number %}
+                <p><strong>Телефон:</strong> {{ user_profile.phone_number }}</p>
+            {% endif %}
+
+            {% if user_profile.date_birth %}
+                <p><strong>Дата рождения:</strong> {{ user_profile.date_birth|date:"d M Y" }}</p>
+            {% endif %}
+
+            {% if user_profile.bio %}
+                <h2>О себе:</h2>
+                <p>{{ user_profile.bio|linebreaksbr }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
