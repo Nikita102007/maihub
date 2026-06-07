@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+<div class="article-meta-top">
+    {% if user.is_authenticated and user == post.author %}
+        <!-- Добавлен класс "edit-button" к ссылке редактирования -->
+        <a href="{% url 'edit_page' slug=post.slug %}" class="edit-link edit-button">Редактировать статью</a>
+    {% endif %}
+
+    <!-- Теги -->
+    {% with post.tags.all as tags %}
+    {% if tags %}
+    <ul class="tags-list">
+        <li>Теги:</li>
+        {% for t in tags %}
+        <li><a href="{{t.get_absolute_url}}">{{t.tag}}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+
+{% if post.author %}
+    <p class="author-info">
+        Автор:
+        <a href="{% url 'users:user_profile' username=post.author.username %}">
+            <strong>{{ post.author.get_full_name|default:post.author.username }}</strong>
+        </a>
+    </p>
+{% endif %}
+
+{% if post.photo %}
+<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+{% endif %}
+
+{{post.content|linebreaks}}
+{% endblock %}

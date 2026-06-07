@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас — Mai Hub</title>
+    <style>
+        /* ... (Все предыдущие стили CSS остаются без изменений:
+           body, .container, h1, h2, h3, p, ul, li, .cta-section,
+           .btn-primary, .btn-secondary) ...
+        */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 15px;
+            font-size: 2.2em;
+        }
+        h2 {
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+        h3 {
+            margin-top: 20px;
+            font-size: 1.4em;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        li:before {
+            content: '•';
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        .cta-section {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>О нас: Ваш путь к самореализации в студенчестве на Mai Hub</h1>
+    <p>Добро пожаловать на <strong>Mai Hub</strong>! Мы — платформа, созданная специально для студентов, которые хотят максимально эффективно использовать свое время обучения: найти себя, получить реальный опыт и заложить основу для успешной карьеры.</p>
+    <p>Наша миссия — соединить амбициозных студентов с возможностями для роста, стажировок и наставничества.</p>
+    <h2>Что такое Mai Hub?</h2>
+    <p><strong>Mai Hub</strong> — это не просто доска объявлений. Это ваш центр (Hub) в мир профессионального развития, где каждый пользователь может найти ресурсы для самореализации. Мы помогаем вам перейти от теории к практике.</p>
+    <h2>Ключевые функции Mai Hub</h2>
+    <p>Мы предлагаем набор инструментов, разработанных для достижения ваших целей:</p>
+    <h3>1. Публикация статей с контактными данными</h3>
+    <ul><li><strong>Делитесь опытом:</strong> Публикуйте свои проекты, исследования, портфолио или статьи, чтобы продемонстрировать свои навыки потенциальным работодателям или партнерам.</li><li><strong>Указывайте контакты:</strong> При создании публикации вы можете оставить актуальные контактные данные (телефон, email, ссылки на соцсети), чтобы заинтересованные люди могли напрямую с вами связаться.</li></ul>
+    <h3>2. Расширенные профили пользователей</h3>
+    <ul><li><strong>Ваша визитная карточка:</strong> Создайте полноценный профиль, который заменит стандартное резюме. Загружайте фото, рассказывайте о своих навыках, образовании и опыте в разделе "О себе" (Bio).</li><li><strong>Поиск по навыкам:</strong> Используйте профили других пользователей для поиска наставников, партнеров для стартапов или участников для студенческих проектов.</li></ul>
+    <h3>3. Поиск стажировок и проектов</h3>
+    <ul><li><strong>Актуальные возможности:</strong> Специальный раздел с вакансиями для стажировок и волонтерских проектов, где компании и частные лица ищут именно студентов.</li></ul>
+    <h2>Почему Mai Hub важен для студентов?</h2>
+    <p>Самореализация начинается с действия. Mai Hub предоставляет безопасное и целевое пространство, где вы можете:</p>
+    <ul><li><strong>Заявить о себе:</strong> Не ждите окончания ВУЗа, начните создавать свое портфолио и бренд уже сейчас.</li><li><strong>Найти единомышленников:</strong> Общайтесь с другими студентами, обменивайтесь идеями и создавайте совместные проекты.</li><li><strong>Получить обратную связь:</strong> Публикуя свои работы, вы получаете ценную критику и советы от сообщества.</li></ul>
+
+
+    <div class="cta-section">
+        {% if user.is_authenticated %}
+            <a href="{% url 'home' %}" class="btn-primary">Спасибо, что выбрали нас!</a>
+        {% else %}
+            <!-- Если пользователь НЕ вошел в систему, показываем стандартный призыв -->
+            <p><strong>Присоединяйтесь к Mai Hub сегодня и начните строить свое будущее!</strong></p>
+            <a href="{% url 'users:register' %}" class="btn-primary">Присоединяйтесь!</a>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>
